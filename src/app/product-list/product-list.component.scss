@@ -1,4 +1,67 @@
-/* Core Grid CSS */
-@import "ag-grid-community/styles/ag-grid.css";
-/* Quartz Theme Specific CSS */
-@import "ag-grid-community/styles/ag-theme-quartz.css";
+/* src/app/product/product.component.scss */
+
+// Main padding for the component
+main {
+    padding: 1rem;
+  }
+  
+  // Center content styling
+  .center-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  // Table styling
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: #ffffff; /* White background for the table */
+  }
+  
+  // Table header and cells
+  th, td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Light grey border for table rows */
+  }
+  
+  // Table header styling
+  th {
+    background-color: #f4f4f4; /* Light grey background for headers */
+    color: #2980b9; /* Darker blue for header text */
+  }
+  
+  // Responsive table styling
+  @media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    tr {
+      border: 1px solid #ccc; /* Light grey border for table rows */
+    }
+    td {
+      border: none;
+      border-bottom: 1px solid #ddd; /* Light grey bottom border */
+      position: relative;
+      padding-left: 50%;
+      white-space: nowrap;
+      text-align: right;
+    }
+    td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 45%;
+      padding-left: 10px;
+      font-weight: bold;
+      color: #2980b9; /* Darker blue for labels */
+      text-align: left;
+    }
+  }
+  

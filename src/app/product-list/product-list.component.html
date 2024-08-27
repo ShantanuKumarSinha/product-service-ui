@@ -1,11 +1,33 @@
-<p>product-list works!</p>
-{{ 2 + 3 }}
-<div>
-  <ag-grid-angular
-    class="ag-theme-quartz"
-    style="height: 500px"
-    [rowData]="rowData"
-    [columnDefs]="columnDefs"
-  >
-  </ag-grid-angular>
-</div>
+<!-- src/app/product/product.component.html -->
+<main>
+    <div class="center-content">
+      <h1>Product Details</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Brand</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="products.length; else noProducts">
+            <tr *ngFor="let product of products">
+              <td>{{ product.productId }}</td>
+              <td>{{ product.productName }}</td>
+              <td>{{ product.price }}</td>
+              <td>{{ product.brand }}</td>
+              <td>{{ product.quantity }}</td>
+            </tr>
+          </tbody>
+          <ng-template #noProducts>
+            <tr>
+              <td colspan="5">No products available</td>
+            </tr>
+          </ng-template>
+          
+      </table>
+    </div>
+  </main>
+  

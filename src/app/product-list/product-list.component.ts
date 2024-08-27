@@ -1,23 +1,32 @@
-import { Component } from '@angular/core';
-import { AgGridAngular } from 'ag-grid-angular'; // AG Grid Component
-import { ColDef } from 'ag-grid-community'; // Column Definition Type Interface
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../services/product.service';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-product-list',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.scss'
+  styleUrl: './product-list.component.scss',
+  providers: [] // Register HttpClient for this component
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit{
 
-  columnDefs : ColDef[] = [
-    {headerName: 'Product Id', field: 'productId', type: 'number'},
-    {headerName: 'Product Name', field: 'productName'},
-    {headerName: 'Brand', field: 'brand'},
-    {headerName: 'Quantity', field: 'quantity'},
-    {headerName: 'Price', field: 'price'}
-  ]
+  products : Product[] =[];
+  constructor(private productService : ProductService){}
 
+  ngOnInit(): void {
+    this.getProducts();
+  }
 
-  rowData=[{productId: 1, productName: 'Test', brand: 'Test Brand', qunatity : 10, price : 1000}]
+  getProducts(): void{
+    this.productService.getAllProducts().subscribe((response)=>{
+      this.products = response;
+    },
+  (error)=>{
+    console.error('Error fetching response',error);
+  })
+  }
 
 }
