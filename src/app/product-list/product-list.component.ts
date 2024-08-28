@@ -9,7 +9,7 @@ import { Product } from '../models/product.model';
   imports: [CommonModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',
-  providers: [] // Register HttpClient for this component
+  providers: []
 })
 export class ProductListComponent implements OnInit{
 
@@ -18,10 +18,12 @@ export class ProductListComponent implements OnInit{
 
   ngOnInit(): void {
     this.getProducts();
+    console.log(this.products);
   }
 
   getProducts(): void{
     this.productService.getAllProducts().subscribe((response)=>{
+      console.log(response)
       this.products = response;
     },
   (error)=>{
