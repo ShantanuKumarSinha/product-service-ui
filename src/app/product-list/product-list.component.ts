@@ -9,7 +9,7 @@ import { Product } from '../models/product.model';
   imports: [CommonModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',
-  providers: [] // Register HttpClient for this component
+  providers: []
 })
 export class ProductListComponent implements OnInit{
 

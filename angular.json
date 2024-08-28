@@ -68,6 +68,9 @@
             },
             "development": {
               "buildTarget": "product-service-ui:build:development"
+            },
+            "options": {
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
