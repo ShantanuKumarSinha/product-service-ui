@@ -18,12 +18,10 @@ export class ProductListComponent implements OnInit{
 
   ngOnInit(): void {
     this.getProducts();
-    console.log(this.products);
   }
 
   getProducts(): void{
     this.productService.getAllProducts().subscribe((response)=>{
-      console.log(response)
       this.products = response;
     },
   (error)=>{
