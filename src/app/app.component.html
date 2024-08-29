@@ -1,8 +1,19 @@
-<main>
-  <div class="center-content">
-    <h1>Product Service </h1>
-    <div class="pill-group">
-      <app-product-list> </app-product-list>
-    </div>
-  </div>
-</main>
+<div class="app-container">
+  <header>
+    <nav class="navbar">
+      <a class="navbar-brand" href="/">My Store</a>
+      <ul class="navbar-nav">
+        <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <!-- Router outlet to display the routed components -->
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 My Store. All Rights Reserved.</p>
+  </footer>
+</div>

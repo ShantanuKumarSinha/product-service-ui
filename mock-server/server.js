@@ -16,7 +16,13 @@ app.get('/productService/api/v1/product', (request, response) => {
     ]);
   });
 
-  app.post('/api/products', (req, res) => {
+  app.get('/productService/api/v1/product/1', (request, response) => {
+    response.json(
+      { productId: 1, productName: 'Iphone15', brand: 'Apple', price: 150000, quantity : 100 }
+    );
+  });
+
+  app.post('/api/product', (req, res) => {
     const product = req.body;
     product.id = Math.floor(Math.random() * 1000); // Mock an ID
     res.json(product);

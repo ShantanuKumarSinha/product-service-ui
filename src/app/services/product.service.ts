@@ -12,11 +12,20 @@ import { Product } from '../models/product.model';
 export class ProductService {
 
   private apiUrl = environment.productServiceUrl;
+  private productsUrl = this.apiUrl + 'product';
 
   constructor(private httpClient : HttpClient) { }
 
   getAllProducts(): Observable<Product[]>{
-    const productUrl = this.apiUrl+'product';
-    return this.httpClient.get<Product[]>(productUrl);
+    return this.httpClient.get<Product[]>(this.productsUrl);
+  }
+
+  getProductDetails(productId: number): Observable<Product>{
+    return this.httpClient.get<Product>(`${this.productsUrl}/${productId}`);
+  }
+
+  createProduct(product : Product): Observable<Product>{
+    return this.httpClient.post<Product>(this.productsUrl, product);
+
   }
 }
