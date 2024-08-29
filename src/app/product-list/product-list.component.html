@@ -13,10 +13,10 @@
           </tr>
         </thead>
         <tbody *ngIf="products.length; else noProducts">
-            <tr *ngFor="let product of products">
-              <td>{{ product.productId }}</td>
+            <tr *ngFor="let product of products" class="product-item" (click)="viewProductDetails(product.productId)">
+              <td> {{ product.productId}}</td>
               <td>{{ product.productName }}</td>
-              <td>{{ product.price }}</td>
+              <td>{{ product.price | currency }}</td>
               <td>{{ product.brand }}</td>
               <td>{{ product.quantity }}</td>
             </tr>
