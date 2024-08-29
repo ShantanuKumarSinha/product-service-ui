@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit {
   getProducts(): void {
     this.productService.getAllProducts().subscribe({
       next: (response) => (this.products = response),
-      error: (error) => console.error(error);
+      error: (error) => console.error(error)
     });
   }
 }
