@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment/environment';
 import { Product } from '../models/product.model';
+import { CreateOrUpdateProductDetailsRequestDto } from '../models/create-update-product.model';
 
 
 
@@ -25,7 +26,27 @@ export class ProductService {
   }
 
   createProduct(product : Product): Observable<Product>{
-    return this.httpClient.post<Product>(this.productsUrl, product);
+    const headers: HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    const productRequestDto : CreateOrUpdateProductDetailsRequestDto ={
+      email: '',
+      password: '',
+      product: product
+    }
+    return this.httpClient.post<Product>(this.productsUrl, productRequestDto, {headers});
+  }
 
+  updateProduct(product : Product): Observable<Product>{
+    const headers: HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    const productRequestDto : CreateOrUpdateProductDetailsRequestDto = {
+      email: '',
+      password: '',
+      product: product
+    };
+ 
+    return this.httpClient.put<Product>(this.productsUrl, productRequestDto,{headers});
   }
 }
