@@ -22,6 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   product!: Product;
   productId!: number;
   isEditing = false;
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
@@ -55,6 +56,7 @@ export class ProductDetailsComponent implements OnInit {
       complete: () => this.cdr.detectChanges(),
     });
   }
+
   patchTheProductForm(product: Product) {
     this.productForm.patchValue({
       productId: product.productId,
@@ -64,31 +66,14 @@ export class ProductDetailsComponent implements OnInit {
       quantity: product.quantity,
     });
     this.disableFormControls();
+    this.isEditing = false;
   }
 
   onSubmit() {
     if (this.productForm.valid) {
       const product: Product = this.mapFormToModel();
-      const methodCalled =
-        product.productId !== 0
-          ? this.callSaveOrUpdate(product, true)
-          : this.callSaveOrUpdate(product, false);
-      console.log(methodCalled);
+      this.callSaveOrUpdate(product, product.productId!== undefined&&product.productId!==null);
     }
-  }
-  callSaveOrUpdate(product: Product, update: boolean) {
-    if (update)
-      this.productService.updateProduct(product).subscribe({
-        next: (response) => this.patchTheProductForm(response),
-        error: (err) => console.log(err),
-        complete: () => this.cdr.detectChanges(),
-      });
-    else
-      this.productService.createProduct(product).subscribe({
-        next: (response) => this.patchTheProductForm(response),
-        error: (err) => console.log(err),
-        complete: () => this.cdr.detectChanges(),
-      });
   }
 
   mapFormToModel(): Product {
@@ -103,9 +88,24 @@ export class ProductDetailsComponent implements OnInit {
     return product;
   }
 
+  callSaveOrUpdate(product: Product, existingProduct: boolean) {
+    if (existingProduct)
+      this.productService.updateProduct(product).subscribe({
+        next: (response) => this.patchTheProductForm(response),
+        error: (err) => console.log(err),
+        complete: () => this.cdr.detectChanges(),
+      });
+    else
+      this.productService.createProduct(product).subscribe({
+        next: (response) => this.patchTheProductForm(response),
+        error: (err) => console.log(err),
+        complete: () => this.cdr.detectChanges(),
+      });
+  }
+
   onCreateNew() {
     this.productForm.reset({
-      productId: '',
+      productId: undefined,
       productName: '',
       price: 0,
       brand: '',

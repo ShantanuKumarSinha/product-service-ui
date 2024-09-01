@@ -22,10 +22,16 @@ app.get('/productService/api/v1/product', (request, response) => {
     );
   });
 
-  app.post('/api/product', (req, res) => {
-    const product = req.body;
-    product.id = Math.floor(Math.random() * 1000); // Mock an ID
-    res.json(product);
+  app.post('/productService/api/v1/product', (request, response) => {
+    const product = request.body.product;
+    product.productId = Math.floor(Math.random() * 1000); // Mock an ID
+    product.price *=10;
+    response.json(product);
+});
+
+app.put('/productService/api/v1/product', (request, response) => {
+  const product = request.body.product; 
+  response.json(product);
 });
 
 // Start the server
