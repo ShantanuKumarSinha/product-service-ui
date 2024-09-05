@@ -72,7 +72,10 @@ export class ProductDetailsComponent implements OnInit {
   onSubmit() {
     if (this.productForm.valid) {
       const product: Product = this.mapFormToModel();
-      this.callSaveOrUpdate(product, product.productId!== undefined&&product.productId!==null);
+      this.callSaveOrUpdate(
+        product,
+        product.productId !== undefined && product.productId !== null
+      );
     }
   }
 
