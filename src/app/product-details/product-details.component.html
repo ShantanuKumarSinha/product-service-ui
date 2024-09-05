@@ -3,7 +3,6 @@
     <button type="button" (click)="onCreateNew()">Add</button>
     <button type="button" (click)="onUpdate()">Edit</button>
   </div>
-
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
     <div class="product-image">
       {{ isEditing }}
@@ -18,6 +17,17 @@
         formControlName="productName"
         placeholder="Enter product name"
       />
+      <div
+        *ngIf="
+          productForm.get('productName')?.invalid &&
+          productForm.get('productName')?.touched
+        "
+        class="error-message"
+      >
+        <small *ngIf="productForm.get('productName')?.hasError('required')"
+          >Product Name is required</small
+        >
+      </div>
     </div>
 
     <div class="form-group">
@@ -28,6 +38,16 @@
         formControlName="price"
         placeholder="Enter product price"
       />
+      <div
+        *ngIf="
+          productForm.get('price')?.invalid && productForm.get('price')?.touched
+        "
+        class="error-message"
+      >
+        <small *ngIf="productForm.get('price')?.hasError('required')"
+          >Price is required</small
+        >
+      </div>
     </div>
 
     <div class="form-group">
@@ -38,6 +58,16 @@
         formControlName="brand"
         placeholder="Enter product brand"
       />
+      <div
+        *ngIf="
+          productForm.get('brand')?.invalid && productForm.get('brand')?.touched
+        "
+        class="error-message"
+      >
+        <small *ngIf="productForm.get('brand')?.hasError('required')"
+          >Brand is required</small
+        >
+      </div>
     </div>
 
     <div class="form-group">
@@ -48,10 +78,21 @@
         formControlName="quantity"
         placeholder="Enter quantity"
       />
+      <div
+        *ngIf="
+          productForm.get('quantity')?.invalid &&
+          productForm.get('quantity')?.touched
+        "
+        class="error-message"
+      >
+        <small *ngIf="productForm.get('quantity')?.hasError('required')"
+          >Quantity is required</small
+        >
+      </div>
     </div>
 
     <div class="form-group">
-      <button type="submit" [disabled]="!productForm.valid && !isEditing">
+      <button type="submit" [disabled]="!productForm.valid || !isEditing">
         Save
       </button>
     </div>
