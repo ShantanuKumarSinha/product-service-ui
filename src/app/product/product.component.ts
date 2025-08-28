@@ -24,12 +24,12 @@ export class ProductComponent implements OnInit {
       productId: [{ value: 0, disabled: true }],
       productName: [{ value: '', disabled: true }, Validators.required],
       price: [
-        { value: 0, disable: true },
+        { value: 0, disabled: true },
         [Validators.required, Validators.min(0)],
       ],
       brand: [{ value: '', disabled: true }, Validators.required],
       quantity: [
-        { value: 0, disable: true },
+        { value: 0, disabled: true },
         [Validators.required, Validators.min(1)],
       ],
     });
@@ -55,7 +55,7 @@ export class ProductComponent implements OnInit {
 
   onSubmit() {
     if (this.productForm.valid) {
-      this.formSubmit.emit();
+      this.formSubmit.emit(this.productForm.value);
     }
   }
 }

@@ -22,12 +22,12 @@ export class AddProductComponent {
       productId: [{ value: 0, disabled: true }],
       productName: [{ value: '', disabled: true }, Validators.required],
       price: [
-        { value: 0, disable: true },
+        { value: 0, disabled: true },
         [Validators.required, Validators.min(0)],
       ],
       brand: [{ value: '', disabled: true }, Validators.required],
       quantity: [
-        { value: 0, disable: true },
+        { value: 0, disabled: true },
         [Validators.required, Validators.min(1)],
       ],
     });
