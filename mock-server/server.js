@@ -34,6 +34,56 @@ app.put('/productService/api/v1/product', (request, response) => {
   response.json(product);
 });
 
+// for morgan stanley question
+const mockData = {
+  pages: 2,
+  "total-number-of-pages": 10,
+  total: 20,
+  data: [
+    { 
+      cityName: "Bangalore",
+      estimateCost: 350,
+      userRating: {
+        averageRating: 4.5,
+        vote: 130
+      }
+    },
+    {
+      cityName: "Bangalore",
+      estimateCost: 250,
+      userRating: {
+        averageRating: 4.2,
+        vote: 120
+      }
+    },
+    {
+      cityName: "Bangalore",
+      estimateCost: 300,
+      userRating: {
+        averageRating: 4.8,
+        vote: 80
+      }
+    },
+    {
+      cityName: "Bangalore",
+      estimateCost: 300,
+      userRating: {
+        averageRating: 4.8,
+        vote: 100
+      }
+    }
+  ]
+};
+
+app.get('/outlets', (req, res) => {
+  const { cityName } = req.query;
+
+  // Simulate a small delay (optional)
+  setTimeout(() => {
+    res.json(mockData);
+  }, 1000);
+});
+
 // Start the server
 app.listen(port, () => {
     console.log(`Mock server running at http://localhost:${port}`);
