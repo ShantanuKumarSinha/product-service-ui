@@ -23,24 +23,24 @@ describe('ProductComponent', () => {
     expect(component).toBeTruthy();
   });
 
-it('should initialize the form with default values and disabled state', () => {
-  const form = component.productForm;
+  it('should initialize the form with default values and disabled state', () => {
+    const form = component.productForm;
 
-  expect(form.get('productId')?.value).toBe(0);
-  expect(form.get('productId')?.disabled).toBeTrue();
+    expect(form.get('productId')?.value).toBe(0);
+    expect(form.get('productId')?.disabled).toBeTrue();
 
-  expect(form.get('productName')?.value).toBe('');
-  expect(form.get('productName')?.disabled).toBeTrue();
+    expect(form.get('productName')?.value).toBe('');
+    expect(form.get('productName')?.disabled).toBeTrue();
 
-  expect(form.get('price')?.value).toBe(0);
-  expect(form.get('price')?.disabled).toBeTrue();
+    expect(form.get('price')?.value).toBe(0);
+    expect(form.get('price')?.disabled).toBeTrue();
 
-  expect(form.get('brand')?.value).toBe('');
-  expect(form.get('brand')?.disabled).toBeTrue();
+    expect(form.get('brand')?.value).toBe('');
+    expect(form.get('brand')?.disabled).toBeTrue();
 
-  expect(form.get('quantity')?.value).toBe(0);
-  expect(form.get('quantity')?.disabled).toBeTrue();
-});
+    expect(form.get('quantity')?.value).toBe(0);
+    expect(form.get('quantity')?.disabled).toBeTrue();
+  });
 
   it('should enable form controls when isEditing is true', () => {
     component.isEditing = true;
