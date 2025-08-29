@@ -15,8 +15,8 @@ export class AddProductComponent {
   addProductForm: FormGroup;
   isEditing = true;
   constructor(
-    private formBuilder: FormBuilder,
-    private productService: ProductService
+    private readonly formBuilder: FormBuilder,
+    private readonly productService: ProductService
   ) {
     this.addProductForm = this.formBuilder.group({
       productId: [{ value: 0, disabled: true }],

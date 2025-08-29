@@ -16,13 +16,6 @@
       "request": "launch",
       "preLaunchTask": "npm: test",
       "url": "http://localhost:9876/debug.html"
-    },
-    {
-      "name": "ng test code coverage",
-      "type": "chrome",
-      "request": "launch",
-      "preLaunchTask": "npm: test code coverage",
-      "url": "http://localhost:9876/debug.html"
     }
   ]
 }
