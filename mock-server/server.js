@@ -34,7 +34,7 @@ app.put('/productService/api/v1/product', (request, response) => {
   response.json(product);
 });
 
-// for morgan stanley question
+// Mock data for Morgan Stanley interview question
 const mockData = {
   pages: 2,
   "total-number-of-pages": 10,
@@ -80,7 +80,14 @@ app.get('/outlets', (req, res) => {
 
   // Simulate a small delay (optional)
   setTimeout(() => {
-    res.json(mockData);
+    const filteredData = cityName
+      ? mockData.data.filter(item => item.cityName.toLowerCase() === cityName.toLowerCase())
+      : mockData.data;
+    res.json({
+      ...mockData,
+      data: filteredData,
+      total: filteredData.length
+    });
   }, 1000);
 });
 
