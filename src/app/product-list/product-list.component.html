@@ -13,7 +13,7 @@
           </tr>
         </thead>
         <tbody *ngIf="products.length; else noProducts">
-            <tr *ngFor="let product of products" class="product-item" (click)="viewProductDetails(product.productId!)" (keydown)="viewProductDetails(product.productId!)" tabindex="0">
+            <tr *ngFor="let product of products" class="product-item" (click)="viewProductDetails(product.productId!)" (keydown.enter)="viewProductDetails(product.productId!)" (keydown.space)="viewProductDetails(product.productId!)" tabindex="0">
               <td> {{ product.productId}}</td>
               <td>{{ product.productName }}</td>
               <td>{{ product.price | currency }}</td>
