@@ -26,8 +26,8 @@ jobs:
       - name: Build Angular project
         run: npm run build
 
-      - name: Run unit tests
-        run: npm test -- --watch=false --browsers=ChromeHeadless
+      - name: Run tests with coverage
+        run: npm run test -- --code-coverage
 
       - name: Run SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v5
