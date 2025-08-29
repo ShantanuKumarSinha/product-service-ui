@@ -30,7 +30,7 @@ jobs:
         run: npm test -- --watch=false --browsers=ChromeHeadless
 
       - name: Run SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v4
+        uses: SonarSource/sonarqube-scan-action@v5
         with:
           projectBaseDir: .
         env:
